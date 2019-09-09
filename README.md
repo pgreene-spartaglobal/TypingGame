@@ -23,6 +23,9 @@ Day 1 was focused on implementing the most important gameplay elements
 * Lives - decreases when a word reaches the bottom of the screen
 * Game over - when the player loses all of their lives
 
+#### Day 1 Game Image
+![alt text](https://i.imgur.com/2ofW1zl.png "Day 1 Typing Spartan")
+
 ##### TODO:
 * File system - the word generator should select words from a text/csv file
 * Allow the user to select which file they wish to generate words from

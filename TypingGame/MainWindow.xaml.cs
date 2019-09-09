@@ -22,6 +22,7 @@ namespace TypingGame
     public partial class MainWindow : Window
     {
         WordManager wordManager = new WordManager();
+        Random rnd = new Random();
 
         public MainWindow()
         {
@@ -58,9 +59,11 @@ namespace TypingGame
 
         public void SpawnWord(TextBlock text)
         {
-            // todo: Set random position
-            Random rnd = new Random();
-            int randomValue = rnd.Next(0, (int)Canv.ActualWidth);
+            double minValue = 0;
+            double maxValue = Canv.ActualWidth;
+
+            double randomValue = rnd.NextDouble() * (maxValue - minValue) + minValue;
+            //int randomValue = rnd.Next(0, (int)Canv.ActualWidth);
             Canvas.SetTop(text, 0);
             Canvas.SetLeft(text, randomValue);
             Canv.Children.Add(text);
@@ -166,6 +169,8 @@ namespace TypingGame
 
     public class WordGenerator
     {
+       static Random rnd = new Random();
+
         public static string[] wordList =
         {
         "alpha",
@@ -197,7 +202,7 @@ namespace TypingGame
         };
         public static string GetRandomWord()
         {
-            Random rnd = new Random();
+            
             int randomIndex = rnd.Next(0, wordList.Length);
             string randomWord = wordList[randomIndex];
 

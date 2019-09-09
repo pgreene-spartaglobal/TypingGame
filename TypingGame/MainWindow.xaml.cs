@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -54,7 +55,7 @@ namespace TypingGame
             for (int i = 0; i < wordManager.words.Count; i++)
             {
                 Canvas.SetTop(wordManager.words[i].text, Canvas.GetTop(wordManager.words[i].text) + wordManager.words[i].fallSpeed);
-                if (Canvas.GetTop(wordManager.words[i].text) > Canv.ActualHeight)
+                if (Canvas.GetTop(wordManager.words[i].text) > Canv.ActualHeight - 50)
                 {
                     lives--;
                     UpdateLives(lives);
@@ -80,6 +81,20 @@ namespace TypingGame
         {
             //DebugTextBlock.Text += e.Text;
             wordManager.TypeLetter(e.Text[0]);
+        }
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            //// ... Test for Esc key.
+            if (e.Key == Key.Escape)
+            {
+                if (wordManager.hasActiveWord)
+                {
+                    wordManager.EscapeWord(wordManager.activeWord);
+                    //MessageBox.Show("Escape");
+                }
+
+            }
         }
 
         public void SpawnWordCanvas(TextBlock text)
@@ -152,6 +167,22 @@ namespace TypingGame
             words.Remove(word);
         }
 
+        public void EscapeWord(Word word)
+        {
+            double originalLeft = Canvas.GetLeft(word.text);
+            double originalTop = Canvas.GetTop(word.text);
+
+            Word word1 = new Word(word.text.Text);
+            words.Add(word1);
+
+            Canvas.SetTop(word1.text, originalTop);
+            Canvas.SetLeft(word1.text, originalLeft);
+            word.RemoveCanvas(word.text);
+            //mainWindow.RemoveWordCanvas(word.text);
+            words.Remove(word);
+            hasActiveWord = false;
+        }
+
         public void TypeLetter(char letter)
         {
             if (hasActiveWord)
@@ -218,6 +249,11 @@ namespace TypingGame
         {
             typeIndex++;
             RemoveLetter();
+        }
+
+        public void RemoveCanvas(TextBlock text)
+        {
+            mainWindow.RemoveWordCanvas(text);
         }
 
         public bool WordTyped()

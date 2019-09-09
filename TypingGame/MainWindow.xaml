@@ -6,21 +6,21 @@
         xmlns:local="clr-namespace:TypingGame"
         mc:Ignorable="d"
         Title="MainWindow" Height="896" Width="1280" TextInput="Window_TextInput"
-        WindowStartupLocation="CenterScreen" WindowState="Maximized">
+        WindowStartupLocation="CenterScreen" WindowState="Maximized" KeyDown="Window_KeyDown">
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
             <GradientStop Color="#FF0F0F0F" Offset="0"/>
             <GradientStop Color="#FF0F0F0F" Offset="1"/>
         </LinearGradientBrush>
     </Window.Background>
-    <Canvas x:Name="Canv" Margin="100,0">
+    <Canvas x:Name="Canv" Margin="148,0,100,0">
         <Canvas.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                 <GradientStop Color="#FF0F0F0F" Offset="0"/>
                 <GradientStop Color="#FF0F0F0F" Offset="1"/>
             </LinearGradientBrush>
         </Canvas.Background>
-        <Label x:Name="Score" Content="Score: 0" x:FieldModifier="public" Foreground ="Yellow" Canvas.Left="10" Canvas.Top="10" FontSize="36" FontWeight="Thin" Background="#BF000000" Width="auto" />
-        <Label x:Name="Lives" Content="Lives: 0" x:FieldModifier="public" Foreground ="Red" Canvas.Left="10" Canvas.Top="73" FontSize="36" FontWeight="Thin" Background="#BF000000" Width="auto" />
+        <Label x:Name="Score" Content="Score: 0" x:FieldModifier="public" Foreground ="Yellow" Canvas.Left="-141" Canvas.Top="10" FontSize="36" FontWeight="Thin" Background="#BF000000" Width="auto" />
+        <Label x:Name="Lives" Content="Lives: 0" x:FieldModifier="public" Foreground ="Red" Canvas.Left="-141" Canvas.Top="73" FontSize="36" FontWeight="Thin" Background="#BF000000" Width="auto" />
     </Canvas>
 </Window>

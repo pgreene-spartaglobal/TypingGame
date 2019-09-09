@@ -21,10 +21,12 @@ namespace TypingGame
     /// </summary>
     public partial class MainWindow : Window
     {
+        DispatcherTimer dtUpdate = new DispatcherTimer();
         WordManager wordManager = new WordManager();
         Random rnd = new Random();
         int totalScore = 0;
         int lives = 10;
+        int timerInterval = 999;
 
         public MainWindow()
         {
@@ -38,9 +40,8 @@ namespace TypingGame
 
         private void InitializeTimer()
         {
-            DispatcherTimer dtUpdate = new DispatcherTimer();
 
-            dtUpdate.Interval = new TimeSpan(0, 0, 0, 1, 0);
+            dtUpdate.Interval = new TimeSpan(0, 0, 0, 0, timerInterval);
             dtUpdate.Tick += dt_Update;
 
             dtUpdate.Start();
@@ -101,11 +102,29 @@ namespace TypingGame
         {
             totalScore += score;
             Score.Content = "Score: " + totalScore;
+            if (timerInterval >= 101)
+            {
+                timerInterval -= 10;
+                dtUpdate.Interval = new TimeSpan(0, 0, 0, 0, timerInterval);
+            }            
         }
 
         public void UpdateLives(int lives)
         {
+
+
             Lives.Content = "Lives: " + lives;
+            if (lives <= 0)
+            {                
+                GameOver();
+            }
+        }
+
+        public void GameOver()
+        {
+            MessageBox.Show("Game Over!");
+            System.Windows.Application.Current.Shutdown();
+            
         }
     }
 
@@ -115,8 +134,8 @@ namespace TypingGame
         MainWindow mainWindow = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
         public List<Word> words = new List<Word>();
 
-        private bool hasActiveWord;
-        private Word activeWord;
+        public bool hasActiveWord;
+        public Word activeWord;
         private int scoreToAdd = 0;
 
         public void AddWord()
@@ -129,6 +148,7 @@ namespace TypingGame
 
         public void RemoveWord(Word word)
         {
+            hasActiveWord = false;
             words.Remove(word);
         }
 

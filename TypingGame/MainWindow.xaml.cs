@@ -36,7 +36,7 @@ namespace TypingGame
         {
             DispatcherTimer dtUpdate = new DispatcherTimer();
 
-            dtUpdate.Interval = new TimeSpan(0, 0, 0, 0, 300);
+            dtUpdate.Interval = new TimeSpan(0, 0, 0, 1, 0);
             dtUpdate.Tick += dt_Update;
 
             dtUpdate.Start();
@@ -63,16 +63,21 @@ namespace TypingGame
             double maxValue = Canv.ActualWidth;
 
             double randomValue = rnd.NextDouble() * (maxValue - minValue) + minValue;
-            //int randomValue = rnd.Next(0, (int)Canv.ActualWidth);
             Canvas.SetTop(text, 0);
             Canvas.SetLeft(text, randomValue);
             Canv.Children.Add(text);
+        }
+
+        public void RemoveWord(TextBlock text)
+        {
+            Canv.Children.Remove(text);
         }
     }
 
 
     public class WordManager
     {
+
         public List<Word> words = new List<Word>();
 
         private bool hasActiveWord;
@@ -131,8 +136,11 @@ namespace TypingGame
             this.wordValue = word;
             typeIndex = 0;
             text.Text = word;
-            text.FontSize = 22;
-            text.Foreground = Brushes.White;
+            text.FontSize = 28;
+            text.Foreground = Brushes.MintCream;
+            text.Background = Brushes.Black;
+            text.FontWeight = FontWeights.Light;
+            text.Padding = new Thickness(5);
             mainWindow.SpawnWord(text);
         }
 
@@ -154,7 +162,7 @@ namespace TypingGame
             if (wordTyped)
             {
                 // remove word
-                text = null;
+                mainWindow.RemoveWord(text);
             }
 
             return wordTyped;

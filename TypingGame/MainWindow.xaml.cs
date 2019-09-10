@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using System.IO;
 
 namespace TypingGame
 {
@@ -29,14 +30,35 @@ namespace TypingGame
         int lives = 10;
         int timerInterval = 999;
 
+        int difficultySpeed = 0;
+
         public MainWindow()
         {
             InitializeComponent();
             InitializeTimer(); // Create timer used for 'Update' method
 
+            WordGenerator.ReadWordList("google-10000-english-no-swears.txt");
+
             wordManager.AddWord();
             UpdateScore(totalScore);
             UpdateLives(lives);
+
+            switch (MainMenu.difficultyLevel)
+            {
+                case "Easy":
+                    difficultySpeed = 10;
+                    break;
+
+                case "Normal":
+                    difficultySpeed = 20;
+                    break;
+
+                case "Hard":
+                    difficultySpeed = 30;
+                    break;
+                default:
+                    break;
+            }
         }
 
         private void InitializeTimer()
@@ -54,7 +76,8 @@ namespace TypingGame
 
             for (int i = 0; i < wordManager.words.Count; i++)
             {
-                Canvas.SetTop(wordManager.words[i].text, Canvas.GetTop(wordManager.words[i].text) + wordManager.words[i].fallSpeed);
+                //Canvas.SetTop(wordManager.words[i].text, Canvas.GetTop(wordManager.words[i].text) + wordManager.words[i].fallSpeed);
+                Canvas.SetTop(wordManager.words[i].text, Canvas.GetTop(wordManager.words[i].text) + difficultySpeed);
                 if (Canvas.GetTop(wordManager.words[i].text) > Canv.ActualHeight - 50)
                 {
                     lives--;
@@ -63,18 +86,6 @@ namespace TypingGame
                     wordManager.RemoveWord(wordManager.words[i]);
                 }
             }
-
-            //foreach (Word word in wordManager.words)
-            //{
-            //    Canvas.SetTop(word.text, Canvas.GetTop(word.text) + word.fallSpeed);
-            //    if (Canvas.GetTop(word.text) > Canv.ActualHeight)
-            //    {
-            //        lives--;
-            //        UpdateLives(lives);                    
-            //        RemoveWordCanvas(word.text);
-            //        wordManager.RemoveWord(word);
-            //    }
-            //}
         }
 
         private void Window_TextInput(object sender, TextCompositionEventArgs e)
@@ -103,6 +114,7 @@ namespace TypingGame
             double maxValue = Canv.ActualWidth;
 
             double randomValue = rnd.NextDouble() * (maxValue - minValue) + minValue;
+
             Canvas.SetTop(text, 0);
             Canvas.SetLeft(text, randomValue);
             Canv.Children.Add(text);
@@ -316,6 +328,15 @@ namespace TypingGame
             string randomWord = wordList[randomIndex];
 
             return randomWord;
+        }
+
+        //https://docs.microsoft.com/en-us/dotnet/api/system.io.file.readalllines?view=netframework-4.8
+        //string[] lines = File.ReadAllLines("The file path");
+
+        public static void ReadWordList(string path)
+        {
+            string[] lines = File.ReadAllLines(path);
+            wordList = lines;
         }
     }
 }

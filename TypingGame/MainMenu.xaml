@@ -1,0 +1,28 @@
+﻿<Window x:Class="TypingGame.MainMenu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TypingGame"
+        mc:Ignorable="d"
+        Title="MainMenu" Height="302.716" Width="407.924" Icon="spartaglobal_Icon.ico">
+    <Grid Background="#FF0F0F0F">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Typing Spartan" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="36" Foreground="MintCream" FontWeight="Thin" Grid.ColumnSpan="2" Margin="82,0" Height="58" Width="236"/>
+        <StackPanel HorizontalAlignment="Center" Margin="118,152,118,0" Width="164" Grid.ColumnSpan="2">
+            <Button x:Name="Play" Content="Play" Padding="0" Click="Play_Click" Margin="0,0,0,10" Width="150" Height="30" HorizontalAlignment="Center" FontSize="18" FontWeight="Thin"/>
+            <Button x:Name="Quit" Content="Quit" Padding="0" Click="Quit_Click" Margin="0" Width="150" Height="30" HorizontalAlignment="Center" FontSize="18" FontWeight="Thin"/>
+        </StackPanel>
+        <TextBlock HorizontalAlignment="Left" Margin="10,63,0,0" 
+                   Text="Words are falling! &#x0d;&#x0a; Type as quickly as you can to clear the words before they reach the bottom of the screen. &#x0d;&#x0a; The longer you can survive the better your score!" VerticalAlignment="Top" Foreground="MintCream" FontWeight="Thin" TextWrapping="Wrap" Width="380" Grid.ColumnSpan="2" Height="64"/>
+
+        <ComboBox x:Name="DifficultySelection" Margin="87,152,36,90" SelectedIndex="1" FontWeight="Thin" HorizontalContentAlignment="Center" FontSize="14" Grid.Column="1" Height="30">
+            <ComboBoxItem Content="Easy"/>
+            <ComboBoxItem Content="Normal"/>
+            <ComboBoxItem Content="Hard"/>
+        </ComboBox>
+    </Grid>
+</Window>

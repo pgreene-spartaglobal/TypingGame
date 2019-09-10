@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TypingGame"
         mc:Ignorable="d"
-        Title="MainWindow" Height="896" Width="1280" TextInput="Window_TextInput"
-        WindowStartupLocation="CenterScreen" WindowState="Maximized" KeyDown="Window_KeyDown">
+        Title="TypingSpartan" Height="896" Width="1280" TextInput="Window_TextInput"
+        WindowStartupLocation="CenterScreen" WindowState="Maximized" KeyDown="Window_KeyDown"
+        Icon="spartaglobal_Icon.ico">
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
             <GradientStop Color="#FF0F0F0F" Offset="0"/>

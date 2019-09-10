@@ -28,9 +28,10 @@ Day 1 was focused on implementing the most important gameplay elements
 
 ##### TODO:
 * File system - the word generator should select words from a text/csv file
+* Difficulty levels with different speeds
 * Allow the user to select which file they wish to generate words from
 * Main menu - New game, quit
-* On game over allow the player to restart or quit
+* On game over allow the player to restart or quit - use a new user control
 * Highscores - when the game is over allow the player to store highscores
 * Sound - play sounds when the player scores points and when the player loses a life
 * Effects - create effects such as explosions when the player clears a word

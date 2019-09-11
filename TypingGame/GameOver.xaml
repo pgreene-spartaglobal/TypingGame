@@ -1,0 +1,15 @@
+﻿<UserControl x:Class="TypingGame.GameOver"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TypingGame"
+             mc:Ignorable="d" 
+             d:DesignHeight="250" d:DesignWidth="300">
+    <Grid Background="#FF0F0F0F">
+        <Button x:Name="Restart" Content="Restart" HorizontalAlignment="Left" Margin="54,170,0,0" VerticalAlignment="Top" Width="75" Click="Restart_Click"/>
+        <Button x:Name="Quit" Content="Quit" HorizontalAlignment="Left" Margin="172,170,0,0" VerticalAlignment="Top" Width="75" Click="Quit_Click"/>
+        <Label Content="Game Over!" HorizontalAlignment="Left" Margin="54,57,0,0" VerticalAlignment="Top" Foreground="MintCream" FontWeight="Thin" FontSize="36"/>
+
+    </Grid>
+</UserControl>

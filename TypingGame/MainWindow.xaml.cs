@@ -149,9 +149,20 @@ namespace TypingGame
 
         public void GameOver()
         {
-            MessageBox.Show("Game Over!");
-            System.Windows.Application.Current.Shutdown();
-            
+            //MessageBox.Show("Game Over!");
+            //System.Windows.Application.Current.Shutdown();
+
+            Window window = new Window
+            {
+                Title = "Game Over",
+                Content = new GameOver(),
+                Height = 250,
+                Width = 300,
+                //SizeToContent = SizeToContent.WidthAndHeight,
+                ResizeMode = ResizeMode.NoResize
+            };
+
+            window.ShowDialog();
         }
     }
 
@@ -261,6 +272,7 @@ namespace TypingGame
         {
             typeIndex++;
             RemoveLetter();
+            //Console.Beep(10000,2);
         }
 
         public void RemoveCanvas(TextBlock text)

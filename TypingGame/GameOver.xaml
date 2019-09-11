@@ -5,11 +5,15 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TypingGame"
              mc:Ignorable="d" 
-             d:DesignHeight="250" d:DesignWidth="300">
+             d:DesignHeight="300" d:DesignWidth="300">
     <Grid Background="#FF0F0F0F">
-        <Button x:Name="Restart" Content="Restart" HorizontalAlignment="Left" Margin="54,170,0,0" VerticalAlignment="Top" Width="75" Click="Restart_Click"/>
-        <Button x:Name="Quit" Content="Quit" HorizontalAlignment="Left" Margin="172,170,0,0" VerticalAlignment="Top" Width="75" Click="Quit_Click"/>
-        <Label Content="Game Over!" HorizontalAlignment="Left" Margin="54,57,0,0" VerticalAlignment="Top" Foreground="MintCream" FontWeight="Thin" FontSize="36"/>
+        <Button x:Name="Restart" Content="Restart" HorizontalAlignment="Left" Margin="54,235,0,0" VerticalAlignment="Top" Width="75" Click="Restart_Click"/>
+        <Button x:Name="Quit" Content="Quit" HorizontalAlignment="Left" Margin="172,235,0,0" VerticalAlignment="Top" Width="75" Click="Quit_Click"/>
+        <Label Content="Game Over!" HorizontalAlignment="Left" Margin="54,10,0,0" VerticalAlignment="Top" Foreground="MintCream" FontWeight="Thin" FontSize="36"/>
+        <ScrollViewer Margin="54,93,53,85">
+            <TextBlock x:Name="HighscoreText" Foreground="Yellow"></TextBlock>
+        </ScrollViewer>
+            <Label Content="Highscores:" HorizontalAlignment="Left" Height="26" Margin="54,62,0,0" VerticalAlignment="Top" Width="193" Background="{x:Null}" Foreground="Yellow" FontWeight="Thin"/>
 
     </Grid>
 </UserControl>

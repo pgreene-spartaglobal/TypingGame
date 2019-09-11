@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace TypingGame
 {
     /// <summary>
@@ -23,6 +25,18 @@ namespace TypingGame
         public GameOver()
         {
             InitializeComponent();
+            ReadHighscores();
+        }
+
+        private void ReadHighscores()
+        {
+            string[] lines = File.ReadAllLines("highscores.txt");
+            foreach (string line in lines)
+            {
+                HighscoreText.Text += line;
+                HighscoreText.Text += "\n";
+            }
+            
         }
 
         private void Restart_Click(object sender, RoutedEventArgs e)

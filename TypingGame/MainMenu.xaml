@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TypingGame"
         mc:Ignorable="d"
-        Title="MainMenu" Height="302.716" Width="407.924" Icon="spartaglobal_Icon.ico">
+        Title="MainMenu" Height="302.716" Width="407.924" Icon="spartaglobal_Icon.ico"
+        WindowStartupLocation="CenterScreen">
     <Grid Background="#FF0F0F0F">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>

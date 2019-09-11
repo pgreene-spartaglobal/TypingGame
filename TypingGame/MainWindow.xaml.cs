@@ -27,7 +27,7 @@ namespace TypingGame
         WordManager wordManager = new WordManager();
         Random rnd = new Random();
         int totalScore = 0;
-        int lives = 10;
+        int lives = 1;
         int timerInterval = 999;
 
         int difficultySpeed = 0;
@@ -156,11 +156,17 @@ namespace TypingGame
             {
                 Title = "Game Over",
                 Content = new GameOver(),
-                Height = 250,
+                Height = 300,
                 Width = 300,
                 //SizeToContent = SizeToContent.WidthAndHeight,
                 ResizeMode = ResizeMode.NoResize
             };
+            double screenWidth = System.Windows.SystemParameters.PrimaryScreenWidth;
+            double screenHeight = System.Windows.SystemParameters.PrimaryScreenHeight;
+            double windowWidth = this.Width;
+            double windowHeight = this.Height;
+            window.Left = (screenWidth / 2) - (windowWidth / 2);
+            window.Top = (screenHeight / 2) - (windowHeight / 2);
 
             window.ShowDialog();
         }

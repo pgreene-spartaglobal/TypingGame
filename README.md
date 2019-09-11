@@ -1,6 +1,8 @@
-# TypingGame
+# Typing Spartan
 
-## Overview
+This is my first project created as part of my training during Sparta Academy.
+
+## Game Overview
 **Words are falling!**
 
 Type as quickly as you can to clear the words before they reach the bottom of the screen. 
@@ -35,12 +37,18 @@ Day 2 focused on learning how to implement and improve the existing UI as well a
 * Difficulty levels - The user can select from easy, normal and hard. This affects the speed at which words fall.
 * Game over - User control dialog that appears when the player loses the game. This new dialog allows the player to restart and select another difficulty 
 
+### Day 3 Summary
+Added a new window for the user to submit highscores by writing to a file. This file is then read to display all the previously achieved scores 
+
+![alt text](https://i.imgur.com/2k2yG5a.png "Day 3 Submit Highscore")
+![alt text](https://i.imgur.com/63WOAWE.png "Day 3 Highscores")
+
 ##### TODO:
 * ~File system - the word generator should select words from a text/csv file~
 * ~Difficulty levels with different speeds~
 * Allow the user to select which file they wish to generate words from
 * ~Main menu - New game, quit~
 * ~On game over allow the player to restart or quit - use a new user control~
-* Highscores - when the game is over allow the player to store highscores
+* ~Highscores - when the game is over allow the player to store highscores~
 * Sound - play sounds when the player scores points and when the player loses a life
 * Effects - create effects such as explosions when the player clears a word

@@ -26,6 +26,28 @@ namespace TypingGame
         {
             InitializeComponent();
             ReadHighscores();
+            ShowSubmitHighscore();
+        }
+
+        private void ShowSubmitHighscore()
+        {
+            //Window window = new Window
+            //{
+            //    Title = "Submit Highscore",
+            //    Content = new SubmitHighscore(),
+            //    Height = 250,
+            //    Width = 800,
+            //    //SizeToContent = SizeToContent.WidthAndHeight,
+            //    ResizeMode = ResizeMode.NoResize
+            //};
+            //double screenWidth = System.Windows.SystemParameters.PrimaryScreenWidth;
+            //double screenHeight = System.Windows.SystemParameters.PrimaryScreenHeight;
+            //double windowWidth = this.Width;
+            //double windowHeight = this.Height;
+            //window.Left = (screenWidth / 2) - (windowWidth / 2);
+            //window.Top = (screenHeight / 2) - (windowHeight / 2);
+
+            //window.ShowDialog();
         }
 
         private void ReadHighscores()

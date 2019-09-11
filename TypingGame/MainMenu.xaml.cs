@@ -31,8 +31,9 @@ namespace TypingGame
             difficultyLevel = ((ComboBoxItem)DifficultySelection.SelectedItem).Content.ToString();
 
             MainWindow mainWindow = new MainWindow();
-            this.Visibility = Visibility.Hidden; // hide current window
+            //this.Visibility = Visibility.Hidden; // hide current window
             mainWindow.Show();
+            this.Close();
         }
 
         private void Quit_Click(object sender, RoutedEventArgs e)

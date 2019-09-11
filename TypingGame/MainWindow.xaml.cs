@@ -26,7 +26,7 @@ namespace TypingGame
         DispatcherTimer dtUpdate = new DispatcherTimer();
         WordManager wordManager = new WordManager();
         Random rnd = new Random();
-        int totalScore = 0;
+        static public int totalScore = 0;
         int lives = 1;
         int timerInterval = 999;
 
@@ -152,12 +152,30 @@ namespace TypingGame
             //MessageBox.Show("Game Over!");
             //System.Windows.Application.Current.Shutdown();
 
+            //Window window = new Window
+            //{
+            //    Title = "Game Over",
+            //    Content = new GameOver(),
+            //    Height = 300,
+            //    Width = 300,
+            //    //SizeToContent = SizeToContent.WidthAndHeight,
+            //    ResizeMode = ResizeMode.NoResize
+            //};
+            //double screenWidth = System.Windows.SystemParameters.PrimaryScreenWidth;
+            //double screenHeight = System.Windows.SystemParameters.PrimaryScreenHeight;
+            //double windowWidth = this.Width;
+            //double windowHeight = this.Height;
+            //window.Left = (screenWidth / 2) - (windowWidth / 2);
+            //window.Top = (screenHeight / 2) - (windowHeight / 2);
+
+            //window.ShowDialog();
+
             Window window = new Window
             {
-                Title = "Game Over",
-                Content = new GameOver(),
-                Height = 300,
-                Width = 300,
+                Title = "Submit Highscore",
+                Content = new SubmitHighscore(),
+                Height = 250,
+                Width = 800,
                 //SizeToContent = SizeToContent.WidthAndHeight,
                 ResizeMode = ResizeMode.NoResize
             };
@@ -169,6 +187,7 @@ namespace TypingGame
             window.Top = (screenHeight / 2) - (windowHeight / 2);
 
             window.ShowDialog();
+            
         }
     }
 

@@ -28,6 +28,7 @@ namespace TypingGame
 
         private void Play_Click(object sender, RoutedEventArgs e)
         {
+            // Set the difficulty level
             difficultyLevel = ((ComboBoxItem)DifficultySelection.SelectedItem).Content.ToString();
 
             MainWindow mainWindow = new MainWindow();

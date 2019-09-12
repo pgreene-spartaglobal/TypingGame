@@ -27,6 +27,7 @@ namespace TypingGame
             ShowScore();
         }
 
+        // Display the score in the user control
         private void ShowScore()
         {
             Score.Content = "You scored " + MainWindow.totalScore;
@@ -34,11 +35,14 @@ namespace TypingGame
 
         private void Submit_Click(object sender, RoutedEventArgs e)
         {
+            // Write to the textfile
             File.AppendAllText("highscores.txt", "\n" + Name.Text + "," + MainWindow.totalScore + "," + MainMenu.difficultyLevel);
 
+            // Hide the user control
             grid.Background = Brushes.Transparent;
             this.Visibility = Visibility.Hidden;
 
+            // Show the gameover user control
             Window window = new Window
             {
                 Title = "Game Over",

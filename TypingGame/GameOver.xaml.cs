@@ -30,6 +30,7 @@ namespace TypingGame
 
         private void ReadHighscores()
         {
+            // Read the highscores file
             foreach (var line in File.ReadLines("highscores.txt"))
             {
                 string[] words = line.Split(',');
@@ -37,6 +38,7 @@ namespace TypingGame
             }            
         }
 
+        // Restart the game
         private void Restart_Click(object sender, RoutedEventArgs e)
         {
             System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);

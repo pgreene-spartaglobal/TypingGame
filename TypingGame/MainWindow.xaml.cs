@@ -100,6 +100,19 @@ namespace TypingGame
             wordManager.TypeLetter(e.Text[0]);
         }
 
+        // If the user presses escape they can cancel the active word
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+            {
+                if (wordManager.hasActiveWord)
+                {
+                    wordManager.EscapeWord(wordManager.activeWord);
+                }
+
+            }
+        }
+
         // Show the word on the canvas
         public void SpawnWordCanvas(TextBlock text)
         {
@@ -128,9 +141,9 @@ namespace TypingGame
             UpdateInterval();
         }
 
+        // Decrease the time interval, making the game faster
         public void UpdateInterval()
         {
-            // Decrease the time interval, making the game faster (TODO: make separate method for increasing speed)
             if (timerInterval >= 101)
             {
                 timerInterval -= 10;
@@ -138,6 +151,7 @@ namespace TypingGame
             }
         }
 
+        // Decrease lives and check for game over
         public void UpdateLives(int lives)
         {
             Lives.Content = "Lives: " + lives;
@@ -147,6 +161,7 @@ namespace TypingGame
             }
         }
 
+        // Game is over, show the input window for highscore
         public void GameOver()
         {
             Window window = new Window
@@ -172,27 +187,28 @@ namespace TypingGame
 
     public class WordManager
     {
-        MainWindow mainWindow = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
+        MainWindow mainWindow = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault(); // Get a reference to the main window
+
         public List<Word> words = new List<Word>();
-
-        public bool hasActiveWord;
+        public bool hasActiveWord; // Is the user currently in the middle of typing a word?
         public Word activeWord;
-        private int scoreToAdd = 0;
+        private int scoreToAdd = 0; // The longer the word the more score needs to be added
 
+        // Generate a new random word and add it to the list
         public void AddWord()
         {
-
             Word word = new Word(WordGenerator.GetRandomWord());
-
             words.Add(word);
         }
 
+        // The user has finished with the current word so remove it
         public void RemoveWord(Word word)
         {
             hasActiveWord = false;
             words.Remove(word);
         }
 
+        // Stop typing the current word
         public void EscapeWord(Word word)
         {
             double originalLeft = Canvas.GetLeft(word.text);
@@ -208,10 +224,12 @@ namespace TypingGame
             hasActiveWord = false;
         }
 
+        // Type a letter in the word 
         public void TypeLetter(char letter)
         {
             if (hasActiveWord)
             {
+                // Type the next letter
                 if (activeWord.GetNextLetter() == letter)
                 {
                     activeWord.TypeLetter();
@@ -220,6 +238,7 @@ namespace TypingGame
             }
             else
             {
+                // If the user does not currently have an active word set it
                 foreach (Word word in words)
                 {
                     if (word.GetNextLetter() == letter)
@@ -232,6 +251,7 @@ namespace TypingGame
                 }
             }
 
+            // The user has an active word and has finished typing the word
             if (hasActiveWord && activeWord.WordTyped())
             {
                 hasActiveWord = false;
@@ -249,7 +269,7 @@ namespace TypingGame
         public string wordValue;
         private int typeIndex;
 
-        MainWindow mainWindow = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
+        MainWindow mainWindow = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault(); // Get a reference to the main window
 
         public Word(string word)
         {
@@ -268,6 +288,7 @@ namespace TypingGame
             mainWindow.SpawnWordCanvas(text);
         }
 
+        // The next letter in the word string
         public char GetNextLetter()
         {
             return wordValue[typeIndex];
@@ -297,6 +318,7 @@ namespace TypingGame
             return wordTyped;
         }
 
+        // Remove letter from canvas
         public void RemoveLetter()
         {
             text.Text = text.Text.Remove(0, 1);
@@ -337,15 +359,17 @@ namespace TypingGame
         "yankee",
         "zulu"
         };
+
+        // Choose a random word from the list
         public static string GetRandomWord()
-        {
-            
+        {           
             int randomIndex = rnd.Next(0, wordList.Length);
             string randomWord = wordList[randomIndex];
 
             return randomWord;
         }
 
+        // Set the wordlist according to file contents
         public static void ReadWordList(string path)
         {
             string[] lines = File.ReadAllLines(path);

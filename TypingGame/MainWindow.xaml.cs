@@ -119,22 +119,27 @@ namespace TypingGame
             Canv.Children.Remove(text);
         }
 
-
+        // Increase the score, decrease the interval
         public void UpdateScore(int score)
         {
             totalScore += score;
             Score.Content = "Score: " + totalScore;
+
+            UpdateInterval();
+        }
+
+        public void UpdateInterval()
+        {
+            // Decrease the time interval, making the game faster (TODO: make separate method for increasing speed)
             if (timerInterval >= 101)
             {
                 timerInterval -= 10;
                 dtUpdate.Interval = new TimeSpan(0, 0, 0, 0, timerInterval);
-            }            
+            }
         }
 
         public void UpdateLives(int lives)
         {
-
-
             Lives.Content = "Lives: " + lives;
             if (lives <= 0)
             {                

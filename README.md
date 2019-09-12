@@ -1,6 +1,6 @@
 # Typing Spartan
 
-This is my first project created as part of my training during Sparta Academy.
+This is my first project created as part of my training during Sparta Academy. The game was created during a 3 day sprint.
 
 ## Game Overview
 **Words are falling!**
@@ -71,4 +71,9 @@ The word generator is responsible for storing all possible words and then genera
 
 ### MainWindow
 The main window manages the game logic such as score, lives, game over as well as the UI elements on the screen
+
+## Challenges
+The main challenge when making this game was handling the canvas elements to make the words fall on the screen. The difficulty was that I would lose scope of the canvas in other classes. To get around this issue I needed to implement the functionality in the MainWindow class. This changed my initial design as I wanted to have a separate class dedicated to displaying elements on the canvas rather than implement all of it within main.
+
+The next challenge was figuring out how to make UI elements move on the screen during runtime. To solve this I needed to create a dispatch timer. The reason I need a timer is that this would call a function on each tick. On each tick the top position of the word can be incremented 
 

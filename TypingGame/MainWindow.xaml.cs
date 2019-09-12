@@ -83,7 +83,6 @@ namespace TypingGame
             // Check each word to see if it has fallen off the screen
             for (int i = 0; i < wordManager.words.Count; i++)
             {
-                //Canvas.SetTop(wordManager.words[i].text, Canvas.GetTop(wordManager.words[i].text) + wordManager.words[i].fallSpeed);
                 Canvas.SetTop(wordManager.words[i].text, Canvas.GetTop(wordManager.words[i].text) + difficultySpeed);
                 if (Canvas.GetTop(wordManager.words[i].text) > Canv.ActualHeight - 50)
                 {
@@ -101,6 +100,7 @@ namespace TypingGame
             wordManager.TypeLetter(e.Text[0]);
         }
 
+        // Show the word on the canvas
         public void SpawnWordCanvas(TextBlock text)
         {
             double minValue = 0;
@@ -113,10 +113,12 @@ namespace TypingGame
             Canv.Children.Add(text);
         }
 
+        // Remove the word from the canvas
         public void RemoveWordCanvas(TextBlock text)
         {
             Canv.Children.Remove(text);
         }
+
 
         public void UpdateScore(int score)
         {
@@ -142,34 +144,12 @@ namespace TypingGame
 
         public void GameOver()
         {
-            //MessageBox.Show("Game Over!");
-            //System.Windows.Application.Current.Shutdown();
-
-            //Window window = new Window
-            //{
-            //    Title = "Game Over",
-            //    Content = new GameOver(),
-            //    Height = 300,
-            //    Width = 300,
-            //    //SizeToContent = SizeToContent.WidthAndHeight,
-            //    ResizeMode = ResizeMode.NoResize
-            //};
-            //double screenWidth = System.Windows.SystemParameters.PrimaryScreenWidth;
-            //double screenHeight = System.Windows.SystemParameters.PrimaryScreenHeight;
-            //double windowWidth = this.Width;
-            //double windowHeight = this.Height;
-            //window.Left = (screenWidth / 2) - (windowWidth / 2);
-            //window.Top = (screenHeight / 2) - (windowHeight / 2);
-
-            //window.ShowDialog();
-
             Window window = new Window
             {
                 Title = "Submit Highscore",
                 Content = new SubmitHighscore(),
                 Height = 250,
                 Width = 800,
-                //SizeToContent = SizeToContent.WidthAndHeight,
                 ResizeMode = ResizeMode.NoResize
             };
             double screenWidth = System.Windows.SystemParameters.PrimaryScreenWidth;
@@ -219,7 +199,6 @@ namespace TypingGame
             Canvas.SetTop(word1.text, originalTop);
             Canvas.SetLeft(word1.text, originalLeft);
             word.RemoveCanvas(word.text);
-            //mainWindow.RemoveWordCanvas(word.text);
             words.Remove(word);
             hasActiveWord = false;
         }
@@ -264,7 +243,6 @@ namespace TypingGame
         public TextBlock text = new TextBlock();
         public string wordValue;
         private int typeIndex;
-        //public int fallSpeed = 12;
 
         MainWindow mainWindow = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
 
@@ -362,9 +340,6 @@ namespace TypingGame
 
             return randomWord;
         }
-
-        //https://docs.microsoft.com/en-us/dotnet/api/system.io.file.readalllines?view=netframework-4.8
-        //string[] lines = File.ReadAllLines("The file path");
 
         public static void ReadWordList(string path)
         {

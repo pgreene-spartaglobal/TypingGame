@@ -39,16 +39,12 @@ namespace TypingGame
             grid.Background = Brushes.Transparent;
             this.Visibility = Visibility.Hidden;
 
-            
-            
-
             Window window = new Window
             {
                 Title = "Game Over",
                 Content = new GameOver(),
                 Height = 300,
                 Width = 300,
-                //SizeToContent = SizeToContent.WidthAndHeight,
                 ResizeMode = ResizeMode.NoResize
             };
             double screenWidth = System.Windows.SystemParameters.PrimaryScreenWidth;
@@ -59,9 +55,6 @@ namespace TypingGame
             window.Top = (screenHeight / 2) - (windowHeight / 2);
 
             window.ShowDialog();
-
-            
-
         }
     }
 }

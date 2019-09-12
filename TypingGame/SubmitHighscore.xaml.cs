@@ -34,7 +34,7 @@ namespace TypingGame
 
         private void Submit_Click(object sender, RoutedEventArgs e)
         {
-            File.AppendAllText("highscores.txt", "\n" + Name.Text + "," + MainWindow.totalScore);
+            File.AppendAllText("highscores.txt", "\n" + Name.Text + "," + MainWindow.totalScore + "," + MainMenu.difficultyLevel);
 
             grid.Background = Brushes.Transparent;
             this.Visibility = Visibility.Hidden;

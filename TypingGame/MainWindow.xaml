@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:TypingGame"
         mc:Ignorable="d"
         Title="TypingSpartan" Height="896" Width="1280" TextInput="Window_TextInput"
-        WindowStartupLocation="CenterScreen" WindowState="Maximized" KeyDown="Window_KeyDown"
+        WindowStartupLocation="CenterScreen" WindowState="Maximized"
         Icon="spartaglobal_Icon.ico">
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">

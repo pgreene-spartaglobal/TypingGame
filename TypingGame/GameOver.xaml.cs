@@ -52,12 +52,19 @@ namespace TypingGame
 
         private void ReadHighscores()
         {
-            string[] lines = File.ReadAllLines("highscores.txt");
-            foreach (string line in lines)
+
+            foreach (var line in File.ReadLines("highscores.txt"))
             {
-                HighscoreText.Text += line;
-                HighscoreText.Text += "\n";
+                string[] words = line.Split(',');
+                HighscoreText.Text += "\n" + words[0] + "\t" + words[1] + "\t" + words[2];
             }
+
+            //string[] lines = File.ReadAllLines("highscores.txt");
+            //foreach (string line in lines)
+            //{
+            //    HighscoreText.Text += line;
+            //    HighscoreText.Text += "\n";
+            //}
             
         }
 

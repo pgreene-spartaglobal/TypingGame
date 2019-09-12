@@ -26,23 +26,27 @@ namespace TypingGame
         DispatcherTimer dtUpdate = new DispatcherTimer();
         WordManager wordManager = new WordManager();
         Random rnd = new Random();
+
         static public int totalScore = 0;
         int lives = 1;
-        int timerInterval = 999;
-
+        int timerInterval = 750;
         int difficultySpeed = 0;
 
         public MainWindow()
         {
             InitializeComponent();
-            InitializeTimer(); // Create timer used for 'Update' method
 
+            // Initialize timer used for 'Update' method
+            InitializeTimer(); 
+
+            // Generate the list of words from a text file
             WordGenerator.ReadWordList("google-10000-english-no-swears.txt");
 
-            wordManager.AddWord();
+            // Update the score and lives on the canvas
             UpdateScore(totalScore);
             UpdateLives(lives);
 
+            // Set the speed of the game according to the difficulty selected on the main menu
             switch (MainMenu.difficultyLevel)
             {
                 case "Easy":
@@ -61,6 +65,7 @@ namespace TypingGame
             }
         }
 
+        // Set up the timer
         private void InitializeTimer()
         {
 
@@ -70,10 +75,12 @@ namespace TypingGame
             dtUpdate.Start();
         }
 
+        // Called each time the timer 'ticks'
         private void dt_Update(object sender, EventArgs e)
         {
-            wordManager.AddWord();
+            wordManager.AddWord(); // Add a word to the list
 
+            // Check each word to see if it has fallen off the screen
             for (int i = 0; i < wordManager.words.Count; i++)
             {
                 //Canvas.SetTop(wordManager.words[i].text, Canvas.GetTop(wordManager.words[i].text) + wordManager.words[i].fallSpeed);
@@ -88,24 +95,10 @@ namespace TypingGame
             }
         }
 
+        // Get the user input from the keyboard 
         private void Window_TextInput(object sender, TextCompositionEventArgs e)
         {
-            //DebugTextBlock.Text += e.Text;
             wordManager.TypeLetter(e.Text[0]);
-        }
-
-        private void Window_KeyDown(object sender, KeyEventArgs e)
-        {
-            //// ... Test for Esc key.
-            if (e.Key == Key.Escape)
-            {
-                if (wordManager.hasActiveWord)
-                {
-                    wordManager.EscapeWord(wordManager.activeWord);
-                    //MessageBox.Show("Escape");
-                }
-
-            }
         }
 
         public void SpawnWordCanvas(TextBlock text)
@@ -271,7 +264,7 @@ namespace TypingGame
         public TextBlock text = new TextBlock();
         public string wordValue;
         private int typeIndex;
-        public int fallSpeed = 12;
+        //public int fallSpeed = 12;
 
         MainWindow mainWindow = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
 
@@ -279,12 +272,16 @@ namespace TypingGame
         {
             this.wordValue = word;
             typeIndex = 0;
+
+            // Set up the UIElement
             text.Text = word;
             text.FontSize = 24;
             text.Foreground = Brushes.MintCream;
             text.Background = new SolidColorBrush(Color.FromArgb(0xBF, 0x00, 0, 0));
             text.FontWeight = FontWeights.Thin;
             text.Padding = new Thickness(5);
+
+            // Create the word on the canvas
             mainWindow.SpawnWordCanvas(text);
         }
 
@@ -297,7 +294,6 @@ namespace TypingGame
         {
             typeIndex++;
             RemoveLetter();
-            //Console.Beep(10000,2);
         }
 
         public void RemoveCanvas(TextBlock text)

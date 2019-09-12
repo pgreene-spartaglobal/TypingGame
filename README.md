@@ -52,3 +52,23 @@ Added a new window for the user to submit highscores by writing to a file. This 
 * ~Highscores - when the game is over allow the player to store highscores~
 * Sound - play sounds when the player scores points and when the player loses a life
 * Effects - create effects such as explosions when the player clears a word
+
+## Game Implementation
+The game consists of four main classes: MainWindow, WordManager, Word and Word Generator. 
+
+### Word class
+When the game starts words begin to fall from the screen. 
+
+Each of these falling words is encapsulated within a Word object. 
+
+This object contains data that has its string value, its index and TextBlock. The TextBlock being the UIElement that is seen by the player. The reason for creating a variable to store the index is so that the program can know how many letters the player has typed of the word.
+
+### Word Manager
+By creating an object to store all of this data about the word, the data can be stored and passed around easily with the WordManager being responsible for managing all the words through a list.
+
+### Word Generator
+The word generator is responsible for storing all possible words and then generating a random word. The word manager then calls  the word generator to generate a new word to add the list of words.
+
+### MainWindow
+The main window manages the game logic such as score, lives, game over as well as the UI elements on the screen
+
